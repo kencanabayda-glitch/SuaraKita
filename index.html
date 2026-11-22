@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f766e">
+  <title>SuaraKita</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== HALAMAN LOGIN ===== -->
+<div id="login" class="login" hidden>
+  <div class="login-info">
+    <h1>SuaraKita</h1>
+    <p class="sekolah">SMK Negeri 1 Blitar</p>
+    <p>Sampaikan saran fasilitas sekolah dan laporkan barang hilang atau ditemukan.</p>
+    <ul>
+      <li>Bisa dibuka lewat HP</li>
+      <li>Tetap jalan tanpa internet</li>
+      <li>Aspirasi terbanyak didukung ditinjau lebih dulu</li>
+    </ul>
+  </div>
+  <form id="form-login" class="login-kartu">
+    <h2>Selamat datang</h2>
+    <p class="meta">Masuk dulu untuk memakai SuaraKita.</p>
+    <div class="peran">
+      <button type="button" data-peran="siswa" class="aktif">Siswa</button>
+      <button type="button" data-peran="guru">Guru</button>
+    </div>
+    <label id="baris-nama">Username
+      <input id="login-nama" autocomplete="username" placeholder="Masukkan username">
+    </label>
+    <label>Password
+      <input id="login-pass" type="password" autocomplete="current-password" placeholder="Masukkan password">
+    </label>
+    <label class="centang"><input type="checkbox" id="lihat-pass"> Tampilkan password</label>
+    <p id="pesan-login" class="galat" role="alert"></p>
+    <button type="submit" class="besar">Masuk</button>
+  </form>
+</div>
+
+<!-- ===== APLIKASI ===== -->
+<div id="aplikasi" hidden>
+  <header class="atas">
+    <div><h1>SuaraKita</h1><p id="info-user"></p></div>
+    <button id="btn-keluar" type="button" class="abu kecil">Keluar</button>
+  </header>
+
+  <main>
+    <section class="halaman" id="h-beranda">
+      <div class="statistik" id="statistik"></div>
+      <div class="dua-tombol">
+        <button class="besar" data-hal="aspirasi">Sampaikan aspirasi</button>
+        <button class="besar kedua" data-hal="lostfound">Lapor barang</button>
+      </div>
+      <h2>Laporan terbaru</h2>
+      <div id="daftar-terbaru"></div>
+    </section>
+
+    <section class="halaman" id="h-aspirasi" hidden>
+      <h2>E-Aspirasi</h2>
+      <form id="form-aspirasi" class="kotak">
+        <label>Kategori
+          <select name="kategori">
+            <option>Fasilitas</option><option>Kebersihan</option>
+            <option>Kegiatan</option><option>Lainnya</option>
+          </select>
+        </label>
+        <label>Judul <input name="judul" required maxlength="80"></label>
+        <label>Isi aspirasi <textarea name="isi" rows="3" required></textarea></label>
+        <label>Lokasi <input name="lokasi" placeholder="Contoh: Kelas XI RPL 2"></label>
+        <label class="centang"><input type="checkbox" name="anonim"> Sembunyikan nama saya (anonim)</label>
+        <button type="submit">Kirim aspirasi</button>
+      </form>
+      <div class="filter">
+        <input id="cari-aspirasi" placeholder="Cari aspirasi...">
+        <select id="status-aspirasi">
+          <option value="">Semua status</option><option>Baru</option>
+          <option>Diproses</option><option>Selesai</option><option>Ditolak</option>
+        </select>
+      </div>
+      <p class="meta">Diurutkan dari dukungan (suka) terbanyak.</p>
+      <div id="daftar-aspirasi"></div>
+    </section>
+
+    <section class="halaman" id="h-lostfound" hidden>
+      <h2>Lost & Found</h2>
+      <form id="form-lf" class="kotak">
+        <label>Jenis laporan
+          <select name="jenis">
+            <option value="hilang">Saya kehilangan barang</option>
+            <option value="ditemukan">Saya menemukan barang</option>
+          </select>
+        </label>
+        <label>Nama barang <input name="judul" required maxlength="80"></label>
+        <label>Ciri-ciri <textarea name="isi" rows="3" required></textarea></label>
+        <label>Lokasi hilang / ditemukan <input name="lokasi" required></label>
+        <label>Foto barang (opsional)
+          <input type="file" id="foto" accept="image/*">
+        </label>
+        <img id="preview-foto" class="foto" alt="Pratinjau foto" hidden>
+        <label>Kontak (WhatsApp, awali 62) <input name="kontak" inputmode="numeric" placeholder="628123456789"></label>
+        <button type="submit">Kirim laporan</button>
+      </form>
+      <div class="filter">
+        <input id="cari-lf" placeholder="Cari barang...">
+        <select id="jenis-lf">
+          <option value="">Semua</option><option value="hilang">Hilang</option>
+          <option value="ditemukan">Ditemukan</option>
+        </select>
+      </div>
+      <div id="daftar-lf"></div>
+    </section>
+
+    <section class="halaman" id="h-cadangan" hidden>
+      <h2>Rekap data</h2>
+      <div class="kotak">
+        <p class="meta">Data tersimpan di Firebase dan terlihat di semua perangkat. Kamu bisa mengunduh salinan rekapnya.</p>
+        <button id="btn-ekspor" type="button">Unduh rekap (JSON)</button>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bawah">
+    <button data-hal="beranda">Beranda</button>
+    <button data-hal="aspirasi">Aspirasi</button>
+    <button data-hal="lostfound">Lost & Found</button>
+    <button data-hal="cadangan" id="nav-guru" hidden>Rekap</button>
+  </nav>
+</div>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

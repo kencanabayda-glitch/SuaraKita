@@ -1,0 +1,77 @@
+:root{--teal:#0f766e;--tua:#134e4a;--kuning:#f59e0b;--bg:#f1f5f4;--putih:#fff;--teks:#1b2b2a;--abu:#64748b;--garis:#d5dedc}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--teks);line-height:1.5;padding-bottom:72px}
+.atas{background:var(--teal);color:#fff;padding:16px 16px 14px}
+.atas h1{margin:0;font-size:1.4rem}
+.atas p{margin:0;opacity:.85;font-size:.85rem}
+main{max-width:640px;margin:0 auto;padding:16px}
+h2{font-size:1.15rem;margin:18px 0 10px}
+label{display:block;font-size:.85rem;font-weight:600;margin-bottom:10px}
+input,select,textarea{display:block;width:100%;margin-top:4px;padding:10px;border:1px solid var(--garis);border-radius:8px;font:inherit;background:var(--putih)}
+.centang{display:flex;align-items:center;gap:8px;font-weight:400}
+.centang input{width:auto;margin:0}
+button,.tombol-file{display:inline-block;padding:10px 16px;border:0;border-radius:8px;background:var(--teal);color:#fff;font:inherit;font-weight:600;cursor:pointer;margin-top:4px}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--kuning);outline-offset:2px}
+.abu{background:var(--abu)}
+.bahaya{background:#b91c1c}
+.kotak{background:var(--putih);border:1px solid var(--garis);border-radius:10px;padding:14px;margin-bottom:14px}
+.filter{display:flex;gap:8px;margin-bottom:12px}
+.filter select{width:40%}
+.statistik{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.statistik div{background:var(--putih);border:1px solid var(--garis);border-radius:10px;padding:10px;text-align:center}
+.statistik b{display:block;font-size:1.6rem;color:var(--tua)}
+.statistik span{font-size:.75rem;color:var(--abu)}
+.dua-tombol{display:grid;gap:8px;margin-top:12px}
+.besar{padding:14px;font-size:1rem}
+.kedua{background:var(--kuning);color:#3b2a00}
+.kartu{background:var(--putih);border:1px solid var(--garis);border-left:5px solid var(--teal);border-radius:10px;padding:12px;margin-bottom:10px}
+.kartu.hilang{border-left-color:#b91c1c}
+.kartu.ditemukan{border-left-color:#15803d}
+.kartu h3{margin:0 0 4px;font-size:1rem}
+.kartu p{margin:4px 0}
+.meta{font-size:.78rem;color:var(--abu)}
+.lencana{display:inline-block;padding:2px 8px;border-radius:99px;font-size:.75rem;font-weight:700;background:#e2e8f0}
+.Baru,.Aktif{background:#fee2e2;color:#991b1b}
+.Diproses{background:#fef3c7;color:#92400e}
+.Selesai,.Sudah-Kembali{background:#dcfce7;color:#166534}
+.Ditolak{background:#e2e8f0;color:#334155}
+.tanggapan{background:#f1f5f9;padding:8px;border-radius:8px;font-size:.85rem}
+.kosong{text-align:center;color:var(--abu);padding:20px}
+.bawah{position:fixed;bottom:0;left:0;right:0;display:grid;grid-template-columns:repeat(4,1fr);background:var(--putih);border-top:1px solid var(--garis)}
+.bawah button{background:none;color:var(--abu);border-radius:0;margin:0;padding:14px 4px;font-size:.8rem}
+.bawah button.aktif{color:var(--teal);box-shadow:inset 0 3px 0 var(--teal)}
+#toast{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--tua);color:#fff;padding:10px 16px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .2s}
+#toast.tampil{opacity:1}
+@media (prefers-reduced-motion:reduce){#toast{transition:none}}
+
+/* ===== Tambahan v2 ===== */
+[hidden]{display:none!important}
+.atas{display:flex;justify-content:space-between;align-items:center}
+.kecil{padding:6px 12px;margin:0;font-size:.8rem}
+.bawah{grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:1fr}
+.foto{display:block;width:100%;max-height:260px;object-fit:cover;border-radius:8px;margin:8px 0}
+.suka{background:#e2e8f0;color:var(--tua)}
+.suka.aktif{background:var(--kuning);color:#3b2a00}
+.galat{color:#b91c1c;font-size:.85rem;min-height:1.2em;margin:4px 0}
+.kartu a{display:inline-block;margin:6px 0;color:var(--teal);font-weight:600}
+
+/* Halaman login (terinspirasi halaman login Moodle sekolah) */
+.login{min-height:100vh;display:grid;gap:16px;align-content:center;padding:16px;
+  background:linear-gradient(135deg,#0b3d3a,#0f766e 60%,#2a9d8f)}
+/* Untuk memakai foto sekolah: simpan di img/sekolah.jpg lalu ganti baris background di atas dengan
+   background:linear-gradient(rgba(11,61,58,.75),rgba(11,61,58,.75)),url(../img/sekolah.jpg) center/cover; */
+.login-info{color:#fff;max-width:520px;margin:0 auto}
+.login-info h1{font-size:2rem;margin:0}
+.sekolah{font-weight:700;margin:2px 0 10px}
+.login-info ul{padding-left:18px}
+.login-kartu{background:rgba(255,255,255,.95);border-radius:20px;padding:22px;width:100%;max-width:420px;margin:0 auto}
+.login-kartu h2{margin:0}
+.peran{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:14px 0}
+.peran button{background:#e2e8f0;color:var(--tua);margin:0}
+.peran button.aktif{background:var(--teal);color:#fff}
+.login-kartu .besar{width:100%}
+@media (min-width:860px){
+  .login{grid-template-columns:1fr 420px;align-items:center;max-width:1000px;margin:0 auto;gap:40px}
+  .login-info{margin:0}
+  .login-info h1{font-size:2.6rem}
+}

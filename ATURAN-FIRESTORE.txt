@@ -1,0 +1,34 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Hanya dua akun resmi (siswa & guru) yang dianggap "masuk"
+    function masuk() {
+      return request.auth != null
+        && request.auth.token.email in ['siswa@suarakita.app', 'guru@suarakita.app'];
+    }
+    function guru() {
+      return masuk() && request.auth.token.email == 'guru@suarakita.app';
+    }
+
+    match /laporan/{id} {
+      allow read: if masuk();
+
+      allow create: if masuk()
+        && request.resource.data.jenis in ['aspirasi', 'hilang', 'ditemukan']
+        && request.resource.data.status in ['Baru', 'Aktif']
+        && request.resource.data.judul is string
+        && request.resource.data.judul.size() <= 100
+        && request.resource.data.isi is string
+        && request.resource.data.isi.size() <= 2000
+        && request.resource.data.get('suka', []).size() == 0
+        && (!('foto' in request.resource.data) || request.resource.data.foto.size() < 300000);
+
+      // Guru boleh ubah apa saja; siswa hanya boleh mengubah daftar "suka"
+      allow update: if guru()
+        || (masuk() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['suka']));
+
+      allow delete: if guru();
+    }
+  }
+}
