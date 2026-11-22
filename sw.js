@@ -1,6 +1,6 @@
 // sw.js : simpan file aplikasi + modul Firebase ke cache agar bisa dibuka offline.
 // Naikkan angka VERSI setiap kali mengubah file aplikasi.
-const VERSI = "suarakita-v3";
+const VERSI = "suarakita-v4";
 const FILE = [
   "./", "index.html", "manifest.json",
   "css/style.css", "js/app.js", "js/storage.js", "js/firebase-config.js",
