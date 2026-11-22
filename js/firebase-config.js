@@ -1,17 +1,16 @@
-// firebase-config.js : ISI bagian ini dengan konfigurasi dari Firebase Console
-// (Project settings -> Your apps -> Web app -> firebaseConfig).
+// firebase-config.js : konfigurasi dari Firebase Console
 // Catatan: kunci ini memang boleh terlihat publik. Yang melindungi data adalah
 // Aturan (Rules) Firestore, bukan kerahasiaan kunci ini.
 export const firebaseConfig = {
-  apiKey: "ISI_API_KEY",
-  authDomain: "ISI_PROJECT_ID.firebaseapp.com",
-  projectId: "ISI_PROJECT_ID",
-  storageBucket: "ISI_PROJECT_ID.firebasestorage.app",
-  messagingSenderId: "ISI_ANGKA",
-  appId: "ISI_APP_ID"
+  apiKey: "AIzaSyAQEzI7PWBxNEs_rpk9NQ2Knbu-ZoAeOAI",
+  authDomain: "suarakita-80a91.firebaseapp.com",
+  projectId: "suarakita-80a91",
+  storageBucket: "suarakita-80a91.firebasestorage.app",
+  messagingSenderId: "221895344775",
+  appId: "1:221895344775:web:fab24511ebadf4e0de6e22"
 };
 
-// Dua akun ini kamu buat sendiri di Firebase Authentication (lihat langkah setup).
+// Dua akun ini dibuat di Firebase Authentication.
 // Password-nya TIDAK ditulis di kode, tetapi diperiksa oleh Firebase.
 export const EMAIL_SISWA = "siswa@suarakita.app";
 export const EMAIL_GURU = "guru@suarakita.app";
